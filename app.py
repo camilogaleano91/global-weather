@@ -6,6 +6,7 @@ from flask import Flask, jsonify, redirect, render_template, request
 from main import get_cities_weather_data, show_current_weather, get_forecast_graph, get_data_for_correlation
 import matplotlib.pyplot as plt
 from database.script import main, create_connection
+plt.switch_backend('Agg')
 
 
 app = Flask(__name__)
@@ -131,5 +132,5 @@ def fetch_graphs_from_db():
     conn.close()
     return None
 
-
-app.run(host='0.0.0.0', port=port)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=port)
