@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       
       - name: Set up Python
-      - uses: actions/setup-python@v4
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11' 
       - run: python app.py
@@ -23,8 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - uses: mr-smithers-excellent/docker-build-push@v6
-        name: Build & push Docker image
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: camilo91/global-weather
           registry: docker.io
