@@ -24,22 +24,14 @@ jobs:
 
       - name: Build Lambda deployment package
         run: |
-          # Create a temporary directory to hold Lambda deployment package contents
           mkdir lambda_package
-          
-          # Copy the Lambda handler code and any other dependencies into the package directory
           cp -r aws_lambda.py lambda_package/
-          # You may need to copy other dependencies or resources as required
-
-          # Compress the contents of the package directory into a ZIP archive
           zip -r lambda_package.zip lambda_package
-          
-          # Clean up the temporary directory
           rm -rf lambda_package
         working-directory: $GITHUB_WORKSPACE
 
   deploy_lambda:
-    needs: build  # Ensure that the 'deploy_lambda' job runs after 'build' completes successfully
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
