@@ -25,7 +25,7 @@ jobs:
       - name: Build Lambda deployment package
         run: |
           mkdir lambda_package
-          cp -r aws_lambda.py lambda_package/
+          cp -r lambda/aws_lambda.py lambda_package/
           zip -r lambda_package.zip lambda_package
 
   deploy_lambda:
